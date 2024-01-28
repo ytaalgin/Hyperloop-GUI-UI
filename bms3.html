@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Çelikkanat UI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gauge.js/1.3.6/gauge.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+
+		<div class="header">
+      <a href="index.html" class="logo"><img src="logo.png" alt="Çelikkanat" class="img-fluid"></a>
+			<div class="header-icons">
+			<i class="fas fa-window-minimize"></i>
+            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-times"></i>
+            </div>
+		</div>
+
+		<div class="side-nav">
+
+		<div id="search1bar">
+		    <form method="get" action="#">
+		        <input id="search1" name="q" type="text" size="40" placeholder="Ara..." />
+		    </form> 
+    	</div>
+    	<h3>Çelikkanat Hyperloop UI</h3>
+		
+			<ul>
+				<li><a href="baglanti.html">Bağlantı</a></li>
+				<li><a href="index.html">Ana Ekran</a></li>
+				<li><a href="sicaklik.html">Basınç ve Sıcaklık</a></li>
+				<li><a href="bms.html" class="checked">Batarya Yönetim Sistemi</a></li>
+				<li><a href="ipcam.html">IP Kamera</a></li>
+				<li><a href="ariza.html">Durum Analizi/Log</a></li>
+				<li><a href="javascript:window.close();">Çıkış</a></li>
+			</ul>
+
+		</div>
+
+		<div class="main-content" id="ex2">
+			<div class="content">
+     <div class="dashboard">
+        <div class="indicators">
+            <canvas class="indicator" id="bms" style="width:100%;max-width:1000px;height:450px;"></canvas>
+			<script>
+const xValues = ["10s","20s","30s","40s", "50s", "60s", "70s","80s","90s","100s","110s","120s"];
+const yValues = [100, 99, 97, 90, 80, 69, 60, 51, 40, 31, 17, 5];
+
+new Chart("bms", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "#0386d6",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+	      title: {
+      display: true,
+      text: "Batarya Yönetim Sistemi - Şarj Düzeyi (%)",
+	  fontColor: 'white',
+	  fontSize: 25
+    },
+    scales: {
+      yAxes: [{ticks: {min: 0, max:100, fontColor: 'white'}, gridLines: {
+          display: true,
+		  color: "gray"
+        }}],
+		            xAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    fontColor: 'white'
+                },
+		  gridLines: {
+          display: true,
+		  color: "gray"
+        }
+            }]
+    }
+  }
+});
+</script>
+        </div>
+		<div class="controlss">
+            <button id="levitate" onclick="location.href='bms.html';">Şarj Giriş Voltajı</button>
+            <button id="accelerate" onclick="location.href='bms2.html';">Sıcaklık Analizi</button>
+            <button id="brake" onclick="location.href='bms3.html';">Şarj Düzeyi</button>
+            <button id="retract" onclick="location.href='bms4.html';">Sağlık Durumu</button>
+		    <button id="Power" onclick="location.href='bms5.html';">Güç</button>
+        </div>
+    </div>
+ </div></div></div>
+</body>
+</html>

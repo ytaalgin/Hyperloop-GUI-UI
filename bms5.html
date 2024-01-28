@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Çelikkanat UI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js'></script>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+
+		<div class="header">
+      <a href="index.html" class="logo"><img src="logo.png" alt="Çelikkanat" class="img-fluid"></a>
+			<div class="header-icons">
+			<i class="fas fa-window-minimize"></i>
+            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-times"></i>
+            </div>
+		</div>
+
+		<div class="side-nav">
+
+		<div id="search1bar">
+		    <form method="get" action="#">
+		        <input id="search1" name="q" type="text" size="40" placeholder="Ara..." />
+		    </form> 
+    	</div>
+    	<h3>Çelikkanat Hyperloop UI</h3>
+		
+			<ul>
+				<li><a href="baglanti.html">Bağlantı</a></li>
+				<li><a href="index.html">Ana Ekran</a></li>
+				<li><a href="sicaklik.html">Basınç ve Sıcaklık</a></li>
+				<li><a href="bms.html" class="checked">Batarya Yönetim Sistemi</a></li>
+				<li><a href="ipcam.html">IP Kamera</a></li>
+				<li><a href="ariza.html">Durum Analizi/Log</a></li>
+				<li><a href="javascript:window.close();">Çıkış</a></li>
+			</ul>
+
+		</div>
+
+		<div class="main-content" id="ex2">
+			<div class="content">
+     <div class="dashboard">
+		 
+        <div class="indicators">
+                <div class="chartWrapper">
+      <div class="chartAreaWrapper">
+        <div class="chartAreaWrapper2">
+            <canvas id="myChart"></canvas>
+        </div>
+      </div>
+        
+        <canvas id="myChartAxis" height="500" width="0"></canvas>
+    </div>
+			
+        </div>
+		<div class="controlss">
+            <button id="levitate" onclick="location.href='bms.html';">Şarj Giriş Voltajı</button>
+            <button id="accelerate" onclick="location.href='bms2.html';">Sıcaklık Analizi</button>
+            <button id="brake" onclick="location.href='bms3.html';">Şarj Düzeyi</button>
+            <button id="retract" onclick="location.href='bms4.html';">Sağlık Durumu</button>
+		    <button id="Power" onclick="location.href='bms5.html';">Güç</button>
+        </div>
+    </div>
+ </div></div></div>
+	<script>
+		
+var ctx = document.getElementById("myChart").getContext("2d");
+
+        var chart = {
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: {
+                    
+                    onComplete: function(animation) {
+                        var sourceCanvas = myLiveChart.chart.canvas;
+                        var copyWidth = myLiveChart.scales['y-axis-0'].width - 10;
+                        var copyHeight = myLiveChart.scales['y-axis-0'].height + myLiveChart.scales['y-axis-0'].top + 10;
+                        var targetCtx = document.getElementById("myChartAxis").getContext("2d");
+                        targetCtx.canvas.width = copyWidth;
+                targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
+                    }
+                },
+			    scales: {
+      xAxes: [{ticks: {min: 0, max:100, fontColor: 'white'}, gridLines: {
+          display: true,
+		  color: "gray"
+        }}],
+		            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    fontColor: 'white'
+                },
+		  gridLines: {
+          display: true,
+		  color: "gray"
+        }
+            }]
+    }
+      },
+        type: 'line',
+        data: {
+            labels: ["t=1", "t=2", "t=3", "t=4", "t=5", "t=6", "t=7"],
+            datasets: [
+                {
+                    label: "Güç Grafiği",
+                    fillColor: "#fff",
+                    strokeColor: "#fff",
+                    pointColor: "#fff",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "#fff",
+					backgroundColor: "#0386d6",
+                    borderColor: "rgba(0,0,255,1.0)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                }
+            ]
+        }};
+
+   var myLiveChart = new Chart(ctx, chart);
+
+ setInterval(function () {
+  myLiveChart.data.datasets[0].data.push(Math.random() * 100);
+	myLiveChart.data.labels.push("t");
+  var newwidth = $('.chartAreaWrapper2').width() +60;
+  $('.chartAreaWrapper2').width(newwidth);
+   $('.chartAreaWrapper').animate({scrollLeft:newwidth});
+  
+    }, 1000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Çelikkanat UI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+
+		<div class="header">
+      <a href="index.html" class="logo"><img src="logo.png" alt="Çelikkanat" class="img-fluid"></a>
+			<div class="header-icons">
+			<i class="fas fa-window-minimize"></i>
+            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-times"></i>
+            </div>
+		</div>
+
+		<div class="side-nav">
+
+		<div id="search1bar">
+		    <form method="get" action="#">
+		        <input id="search1" name="q" type="text" size="40" placeholder="Ara..." />
+		    </form> 
+    	</div>
+    	<h3>Çelikkanat Hyperloop UI</h3>
+		
+			<ul>
+				<li><a href="baglanti.html">Bağlantı</a></li>
+				<li><a href="index.html" class="checked">Ana Ekran</a></li>
+				<li><a href="sicaklik.html">Basınç ve Sıcaklık</a></li>
+				<li><a href="bms.html">Batarya Yönetim Sistemi</a></li>
+				<li><a href="ipcam.html">IP Kamera</a></li>
+				<li><a href="ariza.html">Durum Analizi/Log</a></li>
+				<li><a href="javascript:window.close();">Çıkış</a></li>
+			</ul>
+
+		</div>
+
+		<div class="main-content" id="ex2">
+			<div class="content">
+     <div class="dashboard">
+        <div class="gauges">
+            <canvas class="gauge" id="speedometer"></canvas>
+            <canvas class="gauge" id="distance"></canvas>
+            <canvas class="gauge" id="thrust"></canvas>
+            <canvas class="gauge" id="levitation"></canvas>
+        </div>
+        <div class="indicators">
+            <canvas class="indicator" id="myChart" style="width:100%;max-width:318px"></canvas>
+            <canvas class="indicator" id="Gyro" style="width:100%;max-width:318px"></canvas>
+            <canvas class="indicator" id="deviation" style="width:100%;max-width:318px"></canvas>
+        </div>
+        <div class="controlsss">
+            <button id="levitate">Levitasyon</button>
+            <button id="accelerate">Hızlanma</button>
+            <button id="brake">Fren Yap</button>
+            <button id="retract">Fren Geri Çek</button>
+        </div>
+        <div class="alert-box" id="alertBox">Uyarı: Son 100 metre!</div>
+    </div>
+ </div></div></div>
+<!-- partial -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gauge.js/1.3.6/gauge.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
